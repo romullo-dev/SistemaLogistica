@@ -58,7 +58,7 @@ class Usuario extends Conexao
             $query = $bd->prepare($sql);
             //blidagem dos dados
             $query->bindValue(':email', $this->getEmail(), PDO::PARAM_STR);
-            $query->bindValue(':senha', $this->getSenha(), PDO::PARAM_STR);
+            $query->bindValue(':senha', md5(string: $this->getSenha()), PDO::PARAM_STR);
             //excutar a query
             $query->execute();
             //retorna o resultado
